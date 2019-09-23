@@ -7,3 +7,6 @@ import cv2
 import os 
 import sys
 import csv
+
+sys.path.insert(0, os.path.expanduser("~"))
+from .python_helpers import * 
