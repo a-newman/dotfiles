@@ -3,7 +3,7 @@ import json
 def jsonload(fpath): 
     with open(fpath) as infile: 
         data = json.load(infile)
-    return infile
+    return data
 
 
 def jsondump(fpath, data): 
