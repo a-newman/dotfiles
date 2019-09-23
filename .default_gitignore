@@ -1,0 +1,13 @@
+# swp files 
+*.sw[oap]
+
+# python
+__pycache__/
+*.py[cod]
+
+# environments
+.env
+.vent
+
+# jupyter
+.ipynb_checkpoints
