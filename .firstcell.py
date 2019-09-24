@@ -1,3 +1,6 @@
+%load_ext autoreload
+%autoreload 2
+
 import json
 import pandas as pd
 import numpy as np 
@@ -9,4 +12,4 @@ import sys
 import csv
 
 sys.path.insert(0, os.path.expanduser("~"))
-from .python_helpers import * 
+from python_helpers import * 
