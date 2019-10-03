@@ -62,15 +62,18 @@ filetype plugin indent on    " required
 " ================ Custom config ============================================
 inoremap jk <Esc>
 syntax on
+
 :set tabstop=4 shiftwidth=4 expandtab
 retab
 
 set number
 set colorcolumn=80
 
+set ignorecase
+set smartcase
+
 command PPjson execute '%!python -m json.tool' | w
 command Pdf execute '!pdflatex %'
 
 set t_Co=256
 colo challenger_deep
-"colo default
