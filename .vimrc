@@ -42,6 +42,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 " Plugin to let you write plain text wo lines and stuff 
 Plugin 'junegunn/goyo.vim'
 
+" Autocomplete plugin 
+Plugin 'valloric/youcompleteme'
+set completeopt-=preview
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -77,3 +81,11 @@ command Pdf execute '!pdflatex %'
 
 set t_Co=256
 colo challenger_deep
+
+set scrolloff=10
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap * *zz
+
+" Increase copy/paste buffer size 
+set viminfo='20,<1000
