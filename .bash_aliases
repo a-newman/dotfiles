@@ -4,7 +4,29 @@ alias gov="cd ~/Dropbox\ \(MIT\)/Files/Documents/Viz"
 alias gow="cd ~/Dropbox\ \(MIT\)/Files/Documents/personal_webpage"
 
 # ssh 
-alias goa="ssh -X apnewman@biohazard-cafe.mit.edu"
+get_or_create_token() {
+  validkey=false
+
+  key=$(klist | grep 'krbtgt');
+  if [ $(echo $key | wc -c) -gt 1 ] 
+  then
+    arr=(${(z)key})
+    exp_date_str=$arr[3,4]
+    exp_date=$(date -d $exp_date_str) 
+    exp_date_seconds=$(date +%s -d $exp_date)
+    cur_date_seconds=$(date +%s)
+    date_diff_seconds=$((cur_date_seconds - exp_date_seconds))
+    if [ $date_diff_seconds -ge 0 ] 
+    then 
+      echo "Key expired" 
+    else 
+      validkey=true
+    fi  
+  fi
+
+  $validkey || kinit apnewman@CSAIL.MIT.EDU;
+} 
+
 alias tun30="ssh -N -f -L localhost:7777:localhost:7777 apnewman@visiongpu30.csail.mit.edu"
 alias tunwed="ssh -N -f -L localhost:7777:localhost:7777 apnewman@wednesday.csail.mit.edu"
 alias tun30x="ssh -N -f -L localhost:7778:localhost:7778 apnewman@visiongpu30.csail.mit.edu"
