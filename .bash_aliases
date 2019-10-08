@@ -1,7 +1,5 @@
 # navigation 
-alias gos="cd ~/Dropbox\ \(MIT\)/Files/Documents/Senior/sem2"
-alias gov="cd ~/Dropbox\ \(MIT\)/Files/Documents/Viz"
-alias gow="cd ~/Dropbox\ \(MIT\)/Files/Documents/personal_webpage"
+source ~/.nav_aliases
 
 # ssh 
 get_or_create_token() {
@@ -26,6 +24,16 @@ get_or_create_token() {
 
   $validkey || kinit apnewman@CSAIL.MIT.EDU;
 } 
+
+clear_gpu_pids() {
+    pids=$(fuser -v /dev/nvidia*);
+    arr=(${(z)pids})
+    for i in "${arr[@]}"
+    do 
+        kill $i;
+    done
+}
+alias cleargpu="clear_gpu_pids" 
 
 alias tun30="ssh -N -f -L localhost:7777:localhost:7777 apnewman@visiongpu30.csail.mit.edu"
 alias tunwed="ssh -N -f -L localhost:7777:localhost:7777 apnewman@wednesday.csail.mit.edu"
@@ -67,3 +75,6 @@ gpu_footer() {
     fi 
 }
 alias gpuf="gpu_footer" 
+
+# fun 
+alias asdfghjkl="hollywood"
