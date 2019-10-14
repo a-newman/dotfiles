@@ -52,14 +52,14 @@ alias gs="git status"
 alias gpom="git push origin master" 
 alias gp="git push" 
 
-# grep 
+#convenience 
 alias -g g="grep -rnw . -e"
-
 # serve static html w/ automatic reloading using npm's reload
 alias serve="reload -b" 
-
-# stats 
+# gpu stats 
 alias gpus="gpustat --watch" 
+# vim 
+alias v="vim"
 
 # tmux 
 gpu_footer() {

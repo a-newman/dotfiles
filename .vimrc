@@ -45,6 +45,10 @@ Plugin 'junegunn/goyo.vim'
 " Autocomplete plugin 
 Plugin 'valloric/youcompleteme'
 set completeopt-=preview
+" enable semantic autocompletion for python
+let g:ycm_semantic_triggers = {
+    \   'python': [ 're!\w{2}' ]
+    \ }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -76,8 +80,15 @@ set colorcolumn=80
 set ignorecase
 set smartcase
 
-command PPjson execute '%!python -m json.tool' | w
+command PPjson execute '%!python -m json.tool' 
+command PPcsv execute '%!column -s, -t' 
 command Pdf execute '!pdflatex %'
+command Py execute 'w !python'
+
+" set nowrap on csv files
+"set cmdheight=2
+autocmd BufNewFile,BufRead *.csv set nowrap | silent PPcsv
+autocmd BufNewFile,BufRead *.json silent PPjson
 
 set t_Co=256
 colo challenger_deep
