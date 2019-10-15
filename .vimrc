@@ -81,12 +81,11 @@ set ignorecase
 set smartcase
 
 command PPjson execute '%!python -m json.tool' 
-command PPcsv execute '%!column -s, -t' 
+command PPcsv execute "%!sed 's/,/,|/g' | column -s '|' -t"
 command Pdf execute '!pdflatex %'
 command Py execute 'w !python'
 
 " set nowrap on csv files
-"set cmdheight=2
 autocmd BufNewFile,BufRead *.csv set nowrap | silent PPcsv
 autocmd BufNewFile,BufRead *.json silent PPjson
 
