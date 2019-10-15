@@ -1,5 +1,5 @@
 # navigation 
-source ~/.nav_aliases
+source ~/.nav_aliases.sh
 
 # ssh 
 get_or_create_token() {
@@ -60,6 +60,11 @@ alias serve="reload -b"
 alias gpus="gpustat --watch" 
 # vim 
 alias v="vim"
+# scp 
+scp_anelise_lambda() {
+    scp $1 anelise@anelise-lambda.csail.mit.edu:~
+} 
+alias scpa="scp_anelise_lambda" 
 
 # tmux 
 gpu_footer() {
