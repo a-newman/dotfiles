@@ -65,6 +65,21 @@ scp_anelise_lambda() {
     scp $1 anelise@anelise-lambda.csail.mit.edu:~
 } 
 alias scpa="scp_anelise_lambda" 
+# csv 
+view_csv_pp_readonly() {
+    csvtool readable $1 | view -c "set nowrap" - 
+}
+alias csv="view_csv_pp_readonly"
+# make new python file
+new_py_file() {
+    if [ "$#" -ne 1 ]; then 
+        echo "Please pass a file name as an argument."
+        exit 1
+    fi 
+    cp ~/.new_py.py $1; 
+    chmod +x $1;
+}
+alias newp="new_py_file" 
 
 # tmux 
 gpu_footer() {
