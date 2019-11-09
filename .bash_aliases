@@ -50,6 +50,8 @@ alias gd="git diff"
 alias gds="git diff --staged" 
 alias gs="git status" 
 alias gpom="git push origin master" 
+alias gpsh="git push origin master" 
+alias gpll="git pull origin master" 
 alias gp="git push" 
 
 #convenience 
@@ -77,8 +79,9 @@ new_py_file() {
         exit 1
     fi 
     cp ~/.new_py.py $1; 
-    chmod +x $1;
+    # chmod +x $1;
 }
+alias p="python"
 alias newp="new_py_file" 
 
 # tmux 

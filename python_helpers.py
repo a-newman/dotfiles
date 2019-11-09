@@ -1,5 +1,5 @@
 import json 
-from IPython.display import Video, HTML
+from IPython.display import HTML
 
 MEMENTO_BASE_URI = "https://data.csail.mit.edu/soundnet/actions3/"
 
@@ -10,7 +10,7 @@ def jsonload(fpath):
 
 def jsondump(fpath, data): 
     with open(fpath, 'w') as outfile: 
-        json.dump(outfile, data)
+        json.dump(data, outfile)
 
 def show_video(path): 
     print("path", path)
