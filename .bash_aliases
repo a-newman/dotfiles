@@ -53,13 +53,16 @@ alias gpom="git push origin master"
 alias gpsh="git push origin master" 
 alias gpll="git pull origin master" 
 alias gp="git push" 
+alias gst="git stash"
+alias gsta="git stash apply"
+alias gco="git checkout"
 
 #convenience 
 alias -g g="grep -rnw . -e"
 # serve static html w/ automatic reloading using npm's reload
 alias serve="reload -b" 
 # gpu stats 
-alias gpus="gpustat --watch" 
+alias gpus="gpustat -FP -i 0.5" 
 # vim 
 alias v="vim"
 # scp 
@@ -99,5 +102,13 @@ gpu_footer() {
 }
 alias gpuf="gpu_footer" 
 
+alias aws="aws2"
+alias fair="~/FAIR-CLI.bin"
+
 # fun 
+hackysack_hollywood() {
+    read -k 2;
+    hollywood;
+}
+alias hh="hackysack_hollywood"
 alias asdfghjkl="hollywood"
