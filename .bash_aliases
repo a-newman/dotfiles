@@ -70,6 +70,10 @@ scp_anelise_lambda() {
     scp $1 anelise@anelise-lambda.csail.mit.edu:~
 } 
 alias scpa="scp_anelise_lambda" 
+scp_anelise_lambda_dl() {
+    scp anelise@anelise-lambda.csail.mit.edu:$1 . 
+}
+alias scpadl="scp_anelise_lambda_dl" 
 # csv 
 view_csv_pp_readonly() {
     csvtool readable $1 | view -c "set nowrap" - 
