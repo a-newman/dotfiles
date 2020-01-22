@@ -1,5 +1,6 @@
 # swp files 
 *.sw[oap]
+.DS_Store
 
 # python
 __pycache__/

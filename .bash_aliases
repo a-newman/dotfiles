@@ -91,6 +91,8 @@ new_py_file() {
 alias p="python"
 alias newp="new_py_file" 
 
+alias gat="gatsby" # gb is taken by git branch
+
 # tmux 
 gpu_footer() {
     percent="10";
