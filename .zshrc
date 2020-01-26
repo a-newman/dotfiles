@@ -18,23 +18,7 @@ fi
 # source bash alias 
 source ~/.bash_aliases
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/anelise/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/anelise/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/anelise/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/anelise/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# this makes gpustat use the same indices as cuda 
-export CUDA_DEVICE_ORDER=PCI_BUS_ID
-
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+# use terminal in vim mode 
+bindkey -v
+bindkey 'jk' vi-cmd-mode
+export KEYTIMEOUT=30 # this reduces the delay when switching modes

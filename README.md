@@ -35,3 +35,7 @@ TODO
 
 Change the line in .zshrc to read `conda activate myenv`. 
 
+### Swapping Ctrl and Caps Lock
+
+Install `gnome-tweak-tools.` Open with `gnome-tweaks.` Go to Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Swap Ctrl and Caps Lock.
+

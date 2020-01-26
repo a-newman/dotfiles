@@ -18,8 +18,6 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
@@ -33,7 +31,7 @@ Plugin 'airblade/vim-gitgutter'
 " Pretty theme 
 Plugin 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 
-" gives you indent guides in python 
+" gives you indent guides 
 Plugin 'nathanaelkane/vim-indent-guides'
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 3 
@@ -47,8 +45,27 @@ Plugin 'valloric/youcompleteme'
 set completeopt-=preview
 " enable semantic autocompletion for python
 let g:ycm_semantic_triggers = {
-    \   'python': [ 're!\w{2}' ]
+    \   'python': [ 're!\w{2}' ],
+    \   'javascript': [ 're!\w{2}' ],
     \ }
+
+" JSX indentation and syntax highlighting
+Plugin 'maxmellon/vim-jsx-pretty'
+
+" Automatic quotes/bracket pairing
+Plugin 'tmsvg/pear-tree'
+" more intuitive bracket pairing; see the README https://github.com/tmsvg/pear-tree
+let g:pear_tree_repeatable_expand = 0 
+
+" More powerful commands for bracket/tag editing
+" See tutorial: http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
+Plugin 'tpope/vim-surround'
+
+" Lets you easily select an indented block (like a function)
+Plugin 'michaeljsmith/vim-indent-object'
+
+" Directory structure in vim 
+Plugin 'preservim/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -71,7 +88,7 @@ filetype plugin indent on    " required
 inoremap jk <Esc>
 syntax on
 
-:set tabstop=4 shiftwidth=4 expandtab
+set softtabstop=4 shiftwidth=4 expandtab
 retab
 
 set number
@@ -81,13 +98,17 @@ set ignorecase
 set smartcase
 
 command PPjson execute '%!python -m json.tool' 
-command PPcsv execute "%!sed 's/,/,|/g' | column -s '|' -t"
+command PPcsv execute "%!column -s ',' -t"
+"command PPcsv execute "%!sed 's/,/,|/g' | column -s '|' -t"
 command Pdf execute '!pdflatex %'
-command Py execute 'w !python'
+command Py execute 'w !python3'
+command Typora execute 'silent !typora % &'
 
 " set nowrap on csv files
 autocmd BufNewFile,BufRead *.csv set nowrap | silent PPcsv
 autocmd BufNewFile,BufRead *.json silent PPjson
+" change the tab length for a js/html file
+autocmd BufNewFile,BufRead *.js,*.html set softtabstop=2 shiftwidth=2
 
 set t_Co=256
 colo challenger_deep
