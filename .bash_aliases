@@ -70,10 +70,6 @@ scp_anelise_lambda() {
     scp $1 anelise@anelise-lambda.csail.mit.edu:~
 } 
 alias scpa="scp_anelise_lambda" 
-scp_anelise_lambda_dl() {
-    scp anelise@anelise-lambda.csail.mit.edu:$1 . 
-}
-alias scpadl="scp_anelise_lambda_dl" 
 # csv 
 view_csv_pp_readonly() {
     csvtool readable $1 | view -c "set nowrap" - 
@@ -90,8 +86,6 @@ new_py_file() {
 }
 alias p="python"
 alias newp="new_py_file" 
-
-alias gat="gatsby" # gb is taken by git branch
 
 # tmux 
 gpu_footer() {
@@ -110,6 +104,12 @@ alias gpuf="gpu_footer"
 
 alias aws="aws2"
 alias fair="~/FAIR-CLI.bin"
+
+alias vrc="vim ~/.vimrc"
+alias brc="vim ~/.bashrc"
+alias zrc="vim ~/.zshrc"
+alias bal="vim ~/.bash_aliases; source ~/.bash_aliases"
+alias nal="vim ~/.nav_aliases.sh; source ~/.nav_aliases.sh"
 
 # fun 
 hackysack_hollywood() {

@@ -29,3 +29,9 @@ python3 install.py --ts-completer
 ### Install Prezto
 TODO
 
+## Handy tips
+
+### Changing default conda env
+
+Change the line in .zshrc to read `conda activate myenv`. 
+
