@@ -71,7 +71,7 @@ let g:ale_linters={
     \'python': ['flake8']
 \}
 let g:ale_fixers={
-    \'python': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'yapf']
+    \'python': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'yapf', 'isort']
 \}
 let g:ale_fix_on_save=1
 
@@ -146,3 +146,6 @@ nnoremap * *zz
 
 " Increase copy/paste buffer size 
 set viminfo='20,<1000
+
+" Treat underscore as space for purpose of ciw
+set iskeyword-=_

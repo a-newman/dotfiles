@@ -59,3 +59,30 @@ Search "default applications" and under video set "VLC" as default
 
 ### TODO remote desktop 
 https://www.tecmint.com/nomachine-an-advanced-remote-desktop-access-tool/
+
+### Making a conda environment jupyter accessible 
+`conda install nb_conda`
+
+### Ale
+if you make a new conda environment, you must run `pip install yapf` to enable Python fixing
+
+### DuckDuckGo
+
+- Install in FireFox (becomes default search engine automatically): https://duckduckgo.com/install
+
+### Custom shortcut to put computer to sleep 
+
+Follow instructions at this link: 
+https://samtinkers.wordpress.com/2013/07/03/keyboard-shortcut-for-suspendsleep-laptop/
+
+Basically: 
+
+```
+echo "systemctl suspend; exit 0" > compsleep
+chmod +x compsleep
+sudo mv compsleep /bin/
+```
+
+Now you have a command `compsleep` that does what it says on the tin. Then go into Ubuntu settings and add a new keyboard shortcut for the command `compsleep`. 
+
+**EDIT**: turns out that Super + L does this automatically, no need for extra setup.
