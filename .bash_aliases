@@ -3,26 +3,32 @@ source ~/.nav_aliases.sh
 
 # ssh 
 get_or_create_token() {
-  validkey=false
+    domain=$1
+    if [ -z "$domain" ]; then
+        echo "get_or_create_token: Please supply a domain name."
+        return 1
+    fi
 
-  key=$(klist | grep 'krbtgt');
-  if [ $(echo $key | wc -c) -gt 1 ] 
-  then
-    arr=(${(z)key})
-    exp_date_str=$arr[3,4]
-    exp_date=$(date -d $exp_date_str) 
-    exp_date_seconds=$(date +%s -d $exp_date)
-    cur_date_seconds=$(date +%s)
-    date_diff_seconds=$((cur_date_seconds - exp_date_seconds))
-    if [ $date_diff_seconds -ge 0 ] 
-    then 
-      echo "Key expired" 
-    else 
-      validkey=true
-    fi  
-  fi
+    validkey=false
 
-  $validkey || kinit apnewman@CSAIL.MIT.EDU;
+    key=$(klist | grep "krbtgt/$domain@$domain");
+    if [ $(echo $key | wc -c) -gt 1 ] 
+    then
+        arr=(${(z)key})
+        exp_date_str=$arr[3,4]
+        exp_date=$(date -d $exp_date_str) 
+        exp_date_seconds=$(date +%s -d $exp_date)
+        cur_date_seconds=$(date +%s)
+        date_diff_seconds=$((cur_date_seconds - exp_date_seconds))
+        if [ $date_diff_seconds -ge 0 ] 
+        then 
+            echo "Key expired" 
+        else 
+            validkey=true
+        fi  
+    fi
+
+    $validkey || kinit apnewman@$domain;
 } 
 
 clear_gpu_pids() {
@@ -107,9 +113,12 @@ alias fair="~/FAIR-CLI.bin"
 
 alias vrc="vim ~/.vimrc"
 alias brc="vim ~/.bashrc"
-alias zrc="vim ~/.zshrc"
+alias zrc="vim ~/.zshrc; source ~/.zshrc"
 alias bal="vim ~/.bash_aliases; source ~/.bash_aliases"
 alias nal="vim ~/.nav_aliases.sh; source ~/.nav_aliases.sh"
+
+alias t="tree -L 3" 
+alias gat="gatsby"
 
 # fun 
 hackysack_hollywood() {

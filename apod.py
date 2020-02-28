@@ -5,7 +5,10 @@ If the current day's item is a picture, download that.
 
 Otherwise, take a random picture from the archives.
 
-APOD API documentation here: https://api.nasa.gov/
+Can also get a random pic with the --random flag.
+
+Get an API key and read the APOD API documentation here: 
+https://api.nasa.gov/
 """
 
 import requests

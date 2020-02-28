@@ -37,5 +37,25 @@ Change the line in .zshrc to read `conda activate myenv`.
 
 ### Swapping Ctrl and Caps Lock
 
-Install `gnome-tweak-tools.` Open with `gnome-tweaks.` Go to Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Swap Ctrl and Caps Lock.
+Install gnome-tweak-tools: 
 
+`sudo apt-get install gnome-tweaks`
+
+Open with `gnome-tweaks.` Go to Keyboard and Mouse -> Additional Layout Options -> Ctrl position -> Swap Ctrl and Caps Lock.
+
+### Installing node and npm 
+
+Follow [these instructions](https://github.com/nodesource/distributions/#deb)
+
+### Ubuntu, putting launcher dock at bottom of screen 
+
+See [here](https://www.howtogeek.com/349697/how-to-move-ubuntu%E2%80%99s-launcher-bar-to-the-bottom-or-right/)
+
+### Set VLC as default video player 
+
+`sudo snap install vlc`
+
+Search "default applications" and under video set "VLC" as default
+
+### TODO remote desktop 
+https://www.tecmint.com/nomachine-an-advanced-remote-desktop-access-tool/
