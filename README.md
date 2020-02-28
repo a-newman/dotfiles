@@ -29,6 +29,13 @@ python3 install.py --ts-completer
 ### Install Prezto
 TODO
 
+### See your conda env on the command line
+
+Edit the agnoster theme to show the conda env instead of virtualenv: 
+https://github.com/agnoster/agnoster-zsh-theme/pull/109/files#diff-4c8be88e7aebd4b991bb908fd51e2815
+Modify this file: 
+/home/anelise/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
+
 ## Handy tips
 
 ### Changing default conda env
