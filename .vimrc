@@ -64,6 +64,20 @@ Plugin 'tpope/vim-surround'
 " Lets you easily select an indented block (like a function)
 Plugin 'michaeljsmith/vim-indent-object'
 
+" API for linters, fixers, etc in lots of languages
+" Installing for Python linting
+Plugin 'dense-analysis/ale'
+let g:ale_linters={
+    \'python': ['flake8']
+\}
+let g:ale_fixers={
+    \'python': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'yapf']
+\}
+let g:ale_fix_on_save=1
+
+" Automatic commenting/uncommenting
+Plugin 'tpope/vim-commentary'
+
 " Directory structure in vim 
 Plugin 'preservim/nerdtree'
 
