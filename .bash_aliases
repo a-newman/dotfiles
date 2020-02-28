@@ -120,6 +120,13 @@ alias nal="vim ~/.nav_aliases.sh; source ~/.nav_aliases.sh"
 alias t="tree -L 3" 
 alias gat="gatsby"
 
+vim_and_typora() {
+    typora $1 &; vim $1
+}
+alias vt="vim_and_typora"
+
+alias apod="bash ~/.dotfiles/apod.sh"
+
 # fun 
 hackysack_hollywood() {
     read -k 2;

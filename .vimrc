@@ -67,6 +67,17 @@ Plugin 'michaeljsmith/vim-indent-object'
 " Directory structure in vim 
 Plugin 'preservim/nerdtree'
 
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+" turns on syntax highlighting for latex-style math expressions
+let g:vim_markdown_math = 1 
+" support from yaml front matter (like that used for gatsby)
+let g:vim_markdown_frontmatter = 1
+" disable folding
+" let g:vim_markdown_folding_disabled = 1
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -92,7 +103,6 @@ set softtabstop=4 shiftwidth=4 expandtab
 retab
 
 set number
-set colorcolumn=80
 
 set ignorecase
 set smartcase
@@ -104,6 +114,8 @@ command Pdf execute '!pdflatex %'
 command Py execute 'w !python3'
 command Typora execute 'silent !typora % &'
 
+" set a column at the right spot for a python file
+autocmd BufNewFile,BufRead *.py set colorcolumn=80
 " set nowrap on csv files
 autocmd BufNewFile,BufRead *.csv set nowrap | silent PPcsv
 autocmd BufNewFile,BufRead *.json silent PPjson
