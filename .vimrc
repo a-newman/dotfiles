@@ -86,7 +86,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " turns on syntax highlighting for latex-style math expressions
 let g:vim_markdown_math = 1 
-" support from yaml front matter (like that used for gatsby)
+" support for yaml front matter (like that used for gatsby)
 let g:vim_markdown_frontmatter = 1
 " disable folding
 " let g:vim_markdown_folding_disabled = 1
@@ -135,6 +135,8 @@ autocmd BufNewFile,BufRead *.csv set nowrap | silent PPcsv
 autocmd BufNewFile,BufRead *.json silent PPjson
 " change the tab length for a js/html file
 autocmd BufNewFile,BufRead *.js,*.html set softtabstop=2 shiftwidth=2
+" turn off spaces-to-tabs for Makefiles
+autocmd FileType make setlocal noexpandtab
 
 set t_Co=256
 colo challenger_deep
@@ -148,4 +150,4 @@ nnoremap * *zz
 set viminfo='20,<1000
 
 " Treat underscore as space for purpose of ciw
-set iskeyword-=_
+" set iskeyword-=_
