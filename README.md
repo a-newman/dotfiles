@@ -29,6 +29,13 @@ python3 install.py --ts-completer
 ### Install Prezto
 TODO
 
+### See your conda env on the command line
+
+Edit the agnoster theme to show the conda env instead of virtualenv: 
+https://github.com/agnoster/agnoster-zsh-theme/pull/109/files#diff-4c8be88e7aebd4b991bb908fd51e2815
+Modify this file: 
+/home/anelise/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme
+
 ## Handy tips
 
 ### Changing default conda env
@@ -82,3 +89,30 @@ If it returns 'off', run this:
 `gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state 'on'`
 
 and reboot.
+
+### Making a conda environment jupyter accessible 
+`conda install nb_conda`
+
+### Ale
+if you make a new conda environment, you must run `pip install yapf` to enable Python fixing
+
+### DuckDuckGo
+
+- Install in FireFox (becomes default search engine automatically): https://duckduckgo.com/install
+
+### Custom shortcut to put computer to sleep 
+
+Follow instructions at this link: 
+https://samtinkers.wordpress.com/2013/07/03/keyboard-shortcut-for-suspendsleep-laptop/
+
+Basically: 
+
+```
+echo "systemctl suspend; exit 0" > compsleep
+chmod +x compsleep
+sudo mv compsleep /bin/
+```
+
+Now you have a command `compsleep` that does what it says on the tin. Then go into Ubuntu settings and add a new keyboard shortcut for the command `compsleep`. 
+
+*EDIT**: turns out that Super + L does this automatically, no need for extra setup.

@@ -46,6 +46,7 @@ alias tunwed="ssh -N -f -L localhost:7777:localhost:7777 apnewman@wednesday.csai
 alias tun30x="ssh -N -f -L localhost:7778:localhost:7778 apnewman@visiongpu30.csail.mit.edu"
 
 alias jup="jupyter notebook --no-browser --port=7779"
+alias jup2="jupyter notebook --no-browser --port=7773"
 
 # git 
 alias gc="git commit" 
@@ -91,6 +92,8 @@ new_py_file() {
     # chmod +x $1;
 }
 alias p="python"
+alias psv="python3 -m http.server"
+alias pi="pip install"
 alias newp="new_py_file" 
 
 # tmux 
@@ -126,6 +129,8 @@ vim_and_typora() {
 alias vt="vim_and_typora"
 
 alias apod="bash ~/.dotfiles/apod.sh"
+
+alias cel="conda env list"
 
 # fun 
 hackysack_hollywood() {
