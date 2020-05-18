@@ -132,6 +132,16 @@ alias apod="bash ~/.dotfiles/apod.sh"
 
 alias cel="conda env list"
 
+# mosh
+moshcon() {
+    mosh $1 --experimental-remote-ip=remote
+}
+
+tun() {
+    port=$1;
+    ssh -N -f -L localhost:$port\:localhost:$port anelise@anelise-lambda.csail.mit.edu
+}
+
 # fun 
 hackysack_hollywood() {
     read -k 2;
