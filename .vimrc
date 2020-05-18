@@ -91,6 +91,8 @@ let g:vim_markdown_frontmatter = 1
 " disable folding
 " let g:vim_markdown_folding_disabled = 1
 
+" Latex
+Plugin 'lervag/vimtex'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

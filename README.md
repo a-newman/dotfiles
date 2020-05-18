@@ -58,4 +58,27 @@ See [here](https://www.howtogeek.com/349697/how-to-move-ubuntu%E2%80%99s-launche
 Search "default applications" and under video set "VLC" as default
 
 ### TODO remote desktop 
+
 https://www.tecmint.com/nomachine-an-advanced-remote-desktop-access-tool/
+
+### Fix Vim bug where you don't see your cursor if there's an ALE error on that line 
+
+Basically you just need to update vim 
+
+```
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim
+```
+
+### Enable numeric keypad
+
+Check if it's currently enabled (this should return 'on'): 
+
+`gsettings get org.gnome.settings-daemon.peripherals.keyboard numlock-state`
+
+If it returns 'off', run this: 
+
+`gsettings set org.gnome.settings-daemon.peripherals.keyboard numlock-state 'on'`
+
+and reboot.
