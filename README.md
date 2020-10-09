@@ -115,4 +115,12 @@ sudo mv compsleep /bin/
 
 Now you have a command `compsleep` that does what it says on the tin. Then go into Ubuntu settings and add a new keyboard shortcut for the command `compsleep`. 
 
-*EDIT**: turns out that Super + L does this automatically, no need for extra setup.
+**EDIT**: turns out that Super + L does this automatically, no need for extra setup.
+
+### Vim ALE deps
+
+`pip install flake8 yapf isort`
+
+### Mount the NFS
+
+The command is already in your `/etc/fstab`. Run `sudo mount -a` to remount it.
