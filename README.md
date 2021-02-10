@@ -26,8 +26,13 @@ cd ~/.vim/bundle/youcompleteme
 python3 install.py --ts-completer
 ```
 
-### Install Prezto
+### Install Zsh 
+
 TODO
+
+### Install Prezto
+
+Instructions here: https://github.com/sorin-ionescu/prezto
 
 ### See your conda env on the command line
 
