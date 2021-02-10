@@ -1,5 +1,6 @@
 # custom 
 apod.sh
+.mypy_cache/
 
 # swp files 
 *.sw[oap]

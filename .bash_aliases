@@ -3,32 +3,26 @@ source ~/.nav_aliases.sh
 
 # ssh 
 get_or_create_token() {
-    domain=$1
-    if [ -z "$domain" ]; then
-        echo "get_or_create_token: Please supply a domain name."
-        return 1
-    fi
+  validkey=false
 
-    validkey=false
+  key=$(klist | grep 'krbtgt');
+  if [ $(echo $key | wc -c) -gt 1 ] 
+  then
+    arr=(${(z)key})
+    exp_date_str=$arr[3,4]
+    exp_date=$(date -d $exp_date_str) 
+    exp_date_seconds=$(date +%s -d $exp_date)
+    cur_date_seconds=$(date +%s)
+    date_diff_seconds=$((cur_date_seconds - exp_date_seconds))
+    if [ $date_diff_seconds -ge 0 ] 
+    then 
+      echo "Key expired" 
+    else 
+      validkey=true
+    fi  
+  fi
 
-    key=$(klist | grep "krbtgt/$domain@$domain");
-    if [ $(echo $key | wc -c) -gt 1 ] 
-    then
-        arr=(${(z)key})
-        exp_date_str=$arr[3,4]
-        exp_date=$(date -d $exp_date_str) 
-        exp_date_seconds=$(date +%s -d $exp_date)
-        cur_date_seconds=$(date +%s)
-        date_diff_seconds=$((cur_date_seconds - exp_date_seconds))
-        if [ $date_diff_seconds -ge 0 ] 
-        then 
-            echo "Key expired" 
-        else 
-            validkey=true
-        fi  
-    fi
-
-    $validkey || kinit apnewman@$domain;
+  $validkey || kinit apnewman@CSAIL.MIT.EDU;
 } 
 
 clear_gpu_pids() {
@@ -48,8 +42,12 @@ alias tun30x="ssh -N -f -L localhost:7778:localhost:7778 apnewman@visiongpu30.cs
 alias jup="jupyter notebook --no-browser --port=7779"
 alias jup2="jupyter notebook --no-browser --port=7773"
 
+alias last_args="fc -ln -1"
+
 # git 
+alias gi="git init; cp ~/.default_gitignore .gitignore"
 alias gc="git commit" 
+# try ga !$ to insert args from the last command
 alias ga="git add" 
 alias grb="git rebase" 
 alias gb="git branch" 
@@ -65,9 +63,11 @@ alias gsta="git stash apply"
 alias gco="git checkout"
 
 #convenience 
-alias -g g="grep -rnw . -e"
+alias -g g="grep -rnwi . -e"
+alias fn="find -name"
+alias e="expr"
 # serve static html w/ automatic reloading using npm's reload
-alias serve="reload -b" 
+# alias serve="reload -b" 
 # gpu stats 
 alias gpus="gpustat -FP -i 0.5" 
 # vim 
@@ -98,7 +98,10 @@ alias newp="new_py_file"
 
 # tmux 
 gpu_footer() {
-    percent="10";
+    percent=$1
+    if [ -z "${percent}" ]; then 
+        percent="13";
+    fi
     # start a tmux session if one is not running
     if [ $(echo $TMUX | wc -c ) -le 1 ] 
     then 
@@ -110,37 +113,22 @@ gpu_footer() {
     fi 
 }
 alias gpuf="gpu_footer" 
+alias tl="tmux ls"
+alias ta="tmux a -t"
 
 alias aws="aws2"
 alias fair="~/FAIR-CLI.bin"
 
 alias vrc="vim ~/.vimrc"
 alias brc="vim ~/.bashrc"
-alias zrc="vim ~/.zshrc; source ~/.zshrc"
+alias zrc="vim ~/.zshrc"
 alias bal="vim ~/.bash_aliases; source ~/.bash_aliases"
 alias nal="vim ~/.nav_aliases.sh; source ~/.nav_aliases.sh"
 
-alias t="tree -L 3" 
-alias gat="gatsby"
-
-vim_and_typora() {
-    typora $1 &; vim $1
-}
-alias vt="vim_and_typora"
-
-alias apod="bash ~/.dotfiles/apod.sh"
-
 alias cel="conda env list"
+alias ca="conda activate"
 
-# mosh
-moshcon() {
-    mosh $1 --experimental-remote-ip=remote
-}
-
-tun() {
-    port=$1;
-    ssh -N -f -L localhost:$port\:localhost:$port anelise@anelise-lambda.csail.mit.edu
-}
+alias tb="tensorboard --logdir"
 
 # fun 
 hackysack_hollywood() {
