@@ -68,11 +68,16 @@ Plugin 'michaeljsmith/vim-indent-object'
 " Installing for Python linting
 Plugin 'dense-analysis/ale'
 let g:ale_linters={
-    \'python': ['flake8', 'mypy']
+    \'python': ['flake8'],
+    \'javascript': ['eslint'],
+    \'yaml': ['yamllint'],
+    \'cpp': ['clangtidy']
 \}
-    " \'python': ['flake8', 'mypy']
 let g:ale_fixers={
-    \'python': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'yapf', 'isort']
+    \'python': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'yapf', 'isort'],
+    \'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+    \'yaml': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+    \'cpp': ['clangtidy', 'remove_trailing_lines', 'trim_whitespace']
 \}
 let g:ale_fix_on_save=1
 " ignores syntax messages from mypy; this will be handled by other linters
@@ -81,6 +86,11 @@ let g:ale_python_mypy_ignore_invalid_syntax=1
 let g:ale_python_mypy_show_notes=1
 " More info about mypy options:
 " https://github.com/dense-analysis/ale/blob/master/doc/ale-python.txt
+" automatically parses compile_commands.json for cpp projects, in order to
+" discover compiler flags to use when linting code
+let g:ale_c_parse_compile_commands=1
+" let g:ale_c_build_dir_names=['build', '.']
+let g:ale_c_build_dir='build'
 
 " Automatic commenting/uncommenting
 Plugin 'tpope/vim-commentary'
@@ -93,13 +103,19 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " turns on syntax highlighting for latex-style math expressions
 let g:vim_markdown_math = 1 
-" support from yaml front matter (like that used for gatsby)
+" support for yaml front matter (like that used for gatsby)
 let g:vim_markdown_frontmatter = 1
 " disable folding
 let g:vim_markdown_folding_disabled = 1
 
 " Mypy support
 Plugin 'integralist/vim-mypy'
+" Latex
+Plugin 'lervag/vimtex'
+let g:tex_flavor = 'latex'
+
+" MDX syntax highlighting
+Plugin 'jxnblk/vim-mdx-js'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -136,14 +152,17 @@ command PPcsv execute "%!column -s ',' -t"
 command Pdf execute '!pdflatex %'
 command Py execute 'w !python3'
 command Typora execute 'silent !typora % &'
+command Sp set spell spelllang=en_us
 
 " set a column at the right spot for a python file
 autocmd BufNewFile,BufRead *.py set colorcolumn=80
 " set nowrap on csv files
 autocmd BufNewFile,BufRead *.csv set nowrap | silent PPcsv
 autocmd BufNewFile,BufRead *.json silent PPjson
+" autocmd BufNewFile,BufRead *.json silent PPjson
 " change the tab length for a js/html file
 autocmd BufNewFile,BufRead *.js,*.html set softtabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead *.js,*.html,*.mustache,*.css,*.yaml,*.cpp,*.h,*.hpp set softtabstop=2 shiftwidth=2
 " turn off spaces-to-tabs for Makefiles
 autocmd FileType make setlocal noexpandtab
 
