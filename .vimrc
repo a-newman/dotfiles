@@ -68,12 +68,19 @@ Plugin 'michaeljsmith/vim-indent-object'
 " Installing for Python linting
 Plugin 'dense-analysis/ale'
 let g:ale_linters={
-    \'python': ['flake8']
+    \'python': ['flake8', 'mypy']
 \}
+    " \'python': ['flake8', 'mypy']
 let g:ale_fixers={
     \'python': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'yapf', 'isort']
 \}
 let g:ale_fix_on_save=1
+" ignores syntax messages from mypy; this will be handled by other linters
+let g:ale_python_mypy_ignore_invalid_syntax=1
+" show more info from mypy? 
+let g:ale_python_mypy_show_notes=1
+" More info about mypy options:
+" https://github.com/dense-analysis/ale/blob/master/doc/ale-python.txt
 
 " Automatic commenting/uncommenting
 Plugin 'tpope/vim-commentary'
@@ -86,13 +93,13 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " turns on syntax highlighting for latex-style math expressions
 let g:vim_markdown_math = 1 
-" support for yaml front matter (like that used for gatsby)
+" support from yaml front matter (like that used for gatsby)
 let g:vim_markdown_frontmatter = 1
 " disable folding
-" let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_disabled = 1
 
-" Latex
-Plugin 'lervag/vimtex'
+" Mypy support
+Plugin 'integralist/vim-mypy'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -150,6 +157,14 @@ nnoremap * *zz
 
 " Increase copy/paste buffer size 
 set viminfo='20,<1000
+
+" Shortcuts for navigating between errors in Ale
+" Ctrl+ k/j moves between ale errors
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Make the popup window for autocomplete/func docs a more visible color
+highlight Pmenu ctermbg=Black
 
 " Treat underscore as space for purpose of ciw
 " set iskeyword-=_
