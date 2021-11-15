@@ -1,0 +1,12 @@
+flake8==4.0.1
+isort==5.10.1
+mypy==0.910
+numpy==1.19.5
+Pillow==8.4.0
+pyflakes==2.4.0
+scipy==1.7.2
+tensorboard==2.7.0
+tensorboard-data-server==0.6.1
+tensorboard-plugin-wit==1.8.0
+tqdm==4.62.3
+yapf==0.31.0
