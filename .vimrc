@@ -41,13 +41,13 @@ let g:indent_guides_enable_on_vim_startup = 1
 Plugin 'junegunn/goyo.vim'
 
 " Autocomplete plugin 
-Plugin 'valloric/youcompleteme'
-set completeopt-=preview
-" enable semantic autocompletion for python
-let g:ycm_semantic_triggers = {
-    \   'python': [ 're!\w{2}' ],
-    \   'javascript': [ 're!\w{2}' ],
-    \ }
+" Plugin 'valloric/youcompleteme'
+" set completeopt-=preview
+" " enable semantic autocompletion for python
+" let g:ycm_semantic_triggers = {
+"     \   'python': [ 're!\w{2}' ],
+"     \   'javascript': [ 're!\w{2}' ],
+"     \ }
 
 " JSX indentation and syntax highlighting
 Plugin 'maxmellon/vim-jsx-pretty'
