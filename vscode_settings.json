@@ -1,0 +1,28 @@
+{
+    "vim.vimrc.enable": true,
+    "editor.formatOnSave": true,
+    "terminal.integrated.inheritEnv": true,
+    "editor.tabCompletion": "on",
+    "editor.minimap.enabled": false,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "autoDocstring.docstringFormat": "google-notypes",
+    "editor.rulers": [
+        {
+            "column": 88,
+            "color": "#fc0fd4"
+        }
+    ],
+    "workbench.colorCustomizations": {
+        "editorBracketHighlight.foreground1": "#e81780"
+    },
+    "[python]": {
+        "editor.formatOnPaste": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "notebook.output.scrolling": true,
+    "workbench.colorTheme": "LaserWave High Contrast",
+    "window.zoomLevel": 2,
+    "gitlens.ai.model": "vscode"
+}
